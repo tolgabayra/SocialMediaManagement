@@ -7,15 +7,13 @@ interface User{
     id: Number,
     name: String,
     description: String
-
-    
 }
 
 
 export class UserController {
 
 
-    private userService = new UserService
+    private userService = new UserService;
 
     /**
      * createUser
