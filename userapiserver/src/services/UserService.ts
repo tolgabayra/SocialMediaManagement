@@ -16,17 +16,17 @@ export class UserService {
     /**
      * delete
      */
-    public delete(id: number) {
+    public delete(id: any) {
         const nowUser = this.userRepository.findOneBy({
             id: id
-        })
+        })        
         return this.userRepository.remove(nowUser as any)
     }
 
     /**
      * update
      */
-    public update(id: number, data: User) {
+    public update(id: any, data: User) {
         const nowUser = this.userRepository.findOneBy({
             id: id
         })
@@ -40,10 +40,10 @@ export class UserService {
     /**
      * show
      */
-    public show(id: number) {
+    public show(id: any) {
         return this.userRepository.findOneBy({
             id: id
-        })       
+        })
     }
 
     /**
