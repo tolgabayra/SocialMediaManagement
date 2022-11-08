@@ -22,7 +22,8 @@ export class UserController {
         try {
 
             const newUser = await this.userService.create(req.body)
-
+             
+            //set
             //Set redis cache
             await redisClient.set("users", JSON.stringify(newUser))
             res.status(201).json(newUser)
