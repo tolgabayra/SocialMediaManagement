@@ -1,6 +1,7 @@
 import express, { Express } from 'express';
 import dotenv from 'dotenv';
-import morgan from "morgan"
+import morgan from "morgan";
+import cookieParser from "cookie-parser"
 const helmet = require("helmet")
 import {AppDataSource} from "./data-source"
 import UserRoutes from "./routes/UserRoutes"
@@ -25,6 +26,7 @@ const app: Express = express();
 app.use(express.json())
 app.use(morgan("dev"))
 app.use(helmet())
+app.use(cookieParser())
 
 
 //Routes

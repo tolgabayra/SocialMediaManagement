@@ -11,10 +11,16 @@ export class AuthController {
         try {
             const userData = await this.authService.Login(req.body.email, req.body.password)
             console.log(userData.length);
-            
+
             if (userData.length !== 0 && userData.length !== null) {
-                const accessToken = this.helper.GenerateAccessToken({ userData })
-                const refreshToken = this.helper.GenerateRefreshToken({ userData })
+
+                const payload = {
+                    id: userData[0].id,
+                    email: userData[0].email
+                }
+
+                const accessToken = this.helper.GenerateAccessToken({ payload })
+                const refreshToken = this.helper.GenerateRefreshToken({ payload })
 
                 res.cookie("access_token", accessToken, {
                     httpOnly: true
@@ -31,6 +37,7 @@ export class AuthController {
             res.status(500).json(error)
         }
     }
+
 
     public RegisterUser = async (req: Request, res: Response): Promise<void> => {
         try {
@@ -51,5 +58,14 @@ export class AuthController {
 
             res.status(500).json(error)
         }
+    }
+
+
+
+
+    public Logout = (req: Request, res: Response) => {
+        res.clearCookie('access_token');
+        res.clearCookie('refresh_token');
+        res.status(200).json({"message": "Log out is successfully "})
     }
 }
