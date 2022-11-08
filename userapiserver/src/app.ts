@@ -6,6 +6,8 @@ const helmet = require("helmet")
 import {AppDataSource} from "./data-source"
 import UserRoutes from "./routes/UserRoutes"
 import AuthRoutes from "./routes/AuthRoutes"
+import redisClient  from './scripts/Redis';
+
 
 
 //Database Connection
@@ -20,6 +22,7 @@ AppDataSource.initialize()
     })
 
 dotenv.config();
+redisClient
 
 const app: Express = express();
 
