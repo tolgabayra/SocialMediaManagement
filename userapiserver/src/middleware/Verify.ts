@@ -1,0 +1,29 @@
+import { Request, Response, NextFunction } from "express";
+import Jwt from "jsonwebtoken"
+
+
+
+export class Verify {
+
+   
+    public VerifyAuthToken(req:Request, res:Response, next:NextFunction) {
+        const AuthHeader = req.cookies.access_token
+
+        if (AuthHeader && !AuthHeader) {
+            Jwt.verify(AuthHeader, process.env.JWT_SECRET_KEY ?? "fsdfs" ,(error:any,user:any) => {
+              if(error){
+                return res.status(403).json({"message": "Token is not valid!"})
+              }
+              req.user = user;
+              next();
+            })
+        } else {
+            res.status(401).json({"message" : "You are not Authenticad!"})
+        }
+    }
+
+
+
+
+
+}
