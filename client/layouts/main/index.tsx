@@ -41,7 +41,7 @@ export default function Main({ children }: Props) {
             <a className="fixed flex items-center justify-center h-8 pr-2 pl-1 bg-blue-600 rounded-full bottom-0 right-0 mr-4 mb-4 shadow-lg text-blue-100 hover:bg-blue-600" href="https://twitter.com/lofiui" target="_top">
                 <div className="flex items-center justify-center h-6 w-6 bg-blue-500 rounded-full">
                 </div>
-                <span className="text-sm ml-1 leading-none">@lofiui</span>
+                <span className="text-sm ml-1 leading-none">Tolga</span>
             </a>
 
 
